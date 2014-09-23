@@ -91,10 +91,8 @@ def main(input_filename):
         
     track = audiofile.analysis
     track_details(track)
-    name = 1
-    for section in track.sections:
+    for name, section in enumerate(track.sections, 1):
         section.render().encode(str(name) + ".mp3")
-        name += 1
         
     print(spacer, os.linesep, border)
     
