@@ -1,0 +1,16 @@
+Possibly we can compare mean_pitches, mean_timbre, etc so as not to separate into as many files.
+
+first = track.sections[0]
+>>> dir(first)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__getstate__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_source', 'absolute_context', 'children', 'confidence', 'container', 'context_string', 'duration', 'encode', 'end', 'get_end', 'get_source', 'group', 'init_audio_data', 'kind', 'local_context', 'mean_loudness', 'mean_pitches', 'mean_timbre', 'next', 'parent', 'prev', 'render', 'resolve_source', 'segments', 'set_source', 'source', 'sources', 'start', 'toxml']
+>>> first.mean_pitches.__doc__
+'\n        Returns a pitch vector that is the mean of the pitch vectors of any segments \n        that overlap this AudioQuantum.\n        Note that this means that some segments will appear in more than one AudioQuantum.\n  
+>>> first.mean_timbre.__doc__
+'\n        Returns a timbre vector that is the mean of the pitch vectors of any segments \n        that overlap this AudioQuantum.\n        Note that this means that some segments will appear in more than one AudioQuantum.\n        '
+>>> 
+>>> second = track.sections[1]
+>>> second.mean_pitches()
+[0.0044666666666666665, 0.0016166666666666666, 0.0008666666666666666, 0.0007166666666666666, 0.0029166666666666664, 0.016666666666666666, 0.004933333333333333, 0.00175, 0.0009833333333333332, 0.0018, 0.0006333333333333333, 0.0029]
+>>> last = track.sections[-1]
+>>> last.mean_pitches()
+[0.015069767441860466, 0.01788372093023256, 0.017069767441860464, 0.022906976744186045, 0.016511627906976745, 0.017186046511627907, 0.023255813953488372, 0.013186046511627907, 0.007837209302325582, 0.008883720930232559, 0.012093023255813955, 0.015372093023255816]
