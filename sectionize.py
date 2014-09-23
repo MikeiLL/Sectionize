@@ -91,8 +91,10 @@ def main(input_filename):
         
     track = audiofile.analysis
     track_details(track)
+    # Zero-pad all section names to the maximum needed length :)
+    fmt = "%0" + str(len(str(len(track.sections)))) + "d.mp3"
     for name, section in enumerate(track.sections, 1):
-        section.render().encode(str(name) + ".mp3")
+        section.render().encode(fmt % name)
         
     print(spacer, os.linesep, border)
     
